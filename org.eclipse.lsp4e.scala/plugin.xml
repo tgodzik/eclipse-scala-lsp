@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.core.contenttype.contentTypes">
+      <content-type
+            base-type="org.eclipse.core.runtime.text"
+            file-extensions="scala"
+            id="org.eclipse.lsp4e.scala"
+            name="Scala"
+            priority="normal">
+      </content-type>
+   </extension>
+   <extension
+         point="org.eclipse.lsp4e.languageServer">
+      <server
+            class="org.eclipse.lsp4e.scala.ScalaLanguageServer"
+            id="com.eclipse.lsp4e.scala.server"
+            label="Scala Language Server">
+      </server>
+      <contentTypeMapping
+            contentType="org.eclipse.lsp4e.scala"
+            id="com.eclipse.lsp4e.scala.server">
+      </contentTypeMapping>
+   </extension>
+   <extension
+         point="org.eclipse.ui.genericeditor.presentationReconcilers">
+      <presentationReconciler
+            class="org.eclipse.tm4e.ui.text.TMPresentationReconciler"
+            contentType="org.eclipse.lsp4e.scala">
+      </presentationReconciler>
+   </extension>
+   <extension
+         point="org.eclipse.ui.editors">
+      <editorContentTypeBinding
+            contentTypeId="org.eclipse.lsp4e.scala"
+            editorId="org.eclipse.ui.genericeditor.GenericEditor">
+      </editorContentTypeBinding>
+   </extension>
+   <extension
+         point="org.eclipse.tm4e.registry.grammars">
+      <grammar
+            path="syntaxes/Scala.plist"
+            scopeName="source.scala">
+      </grammar>
+      <scopeNameContentTypeBinding
+            contentTypeId="org.eclipse.lsp4e.scala"
+            scopeName="source.scala">
+      </scopeNameContentTypeBinding>
+   </extension>
+
+</plugin>
